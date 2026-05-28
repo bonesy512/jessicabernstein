@@ -189,15 +189,15 @@ export function Header() {
               <SheetTitle className="font-serif text-lg font-semibold tracking-tight mb-6 text-foreground">
                 Jessica Bernstein.
               </SheetTitle>
-              <div className="flex flex-col gap-6 flex-grow overflow-y-auto pr-2 mt-6">
-                <div className="flex flex-col gap-3">
-                  <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">Navigation</span>
+              <div className="flex flex-col gap-8 flex-grow overflow-y-auto pr-2 mt-4">
+                <div className="flex flex-col gap-1">
+                  <span className="text-xs font-semibold tracking-wider text-muted-foreground/80 uppercase mb-2">Navigation</span>
                   {NAV_LINKS.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className={`text-base font-medium py-1 transition-colors hover:text-foreground ${isActive(link.href) ? "text-foreground" : "text-muted-foreground"
+                      className={`block w-full py-3 text-lg font-medium tracking-wide transition-colors hover:text-foreground text-left border-b border-border/40 last:border-0 ${isActive(link.href) ? "text-foreground" : "text-muted-foreground"
                         }`}
                     >
                       {link.label}
@@ -205,14 +205,14 @@ export function Header() {
                   ))}
                 </div>
 
-                <div className="flex flex-col gap-3 pt-3 border-t border-border">
-                  <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase font-serif">Practice Areas</span>
+                <div className="flex flex-col gap-1 pt-6 border-t border-border">
+                  <span className="text-xs font-semibold tracking-wider text-muted-foreground/80 uppercase font-serif mb-2">Practice Areas</span>
                   {PRACTICE_AREAS.map((area) => (
                     <Link
                       key={area.href}
                       href={area.href}
                       onClick={() => setIsOpen(false)}
-                      className={`text-sm font-medium py-1 transition-colors hover:text-foreground ${isActive(area.href) ? "text-foreground" : "text-muted-foreground"
+                      className={`block w-full py-3 text-base font-medium transition-colors hover:text-foreground text-left border-b border-border/40 last:border-0 ${isActive(area.href) ? "text-foreground" : "text-muted-foreground"
                         }`}
                     >
                       {area.label}
@@ -221,18 +221,18 @@ export function Header() {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-4 pt-6 border-t border-border mt-auto w-full max-w-xs mx-auto justify-center items-center">
+              <div className="flex flex-col gap-4 pt-6 pb-10 border-t border-border mt-auto w-full max-w-xs mx-auto justify-center items-center text-center">
                 <Button
                   asChild
                   variant="destructive"
-                  className="w-full justify-center bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-sm"
+                  className="w-full h-12 justify-center bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-sm text-base font-semibold shadow-level-2"
                 >
-                  <a href="tel:5128872028" className="flex items-center justify-center gap-2 py-2">
+                  <a href="tel:5128872028" className="flex items-center justify-center gap-2 w-full h-full">
                     <Phone className="h-4 w-4" />
                     <span>Call 24/7 Jail Release</span>
                   </a>
                 </Button>
-                <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground text-center">
+                <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground/85 text-center mt-1">
                   <AlertTriangle className="h-4 w-4 text-destructive flex-shrink-0" />
                   <span>Jail release services available 24/7.</span>
                 </div>
