@@ -51,16 +51,106 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md transition-colors duration-200">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo/Brand */}
-        <div className="flex items-center gap-2">
-          <Link
-            href="/"
-            className="font-serif text-xl font-semibold tracking-tight hover:opacity-95 text-foreground transition-opacity"
-            id="nav-logo"
-          >
-            Jessica Bernstein<span className="text-destructive font-bold">.</span>
-          </Link>
+      <div className="mx-auto flex flex-col md:flex-row md:h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3 md:py-0 gap-3 md:gap-4">
+        {/* Row 1: Logo & Mobile Triggers Wrapper */}
+        <div className="flex w-full md:w-auto items-center justify-between md:justify-start gap-4">
+          {/* Logo/Brand */}
+          <div className="flex items-center gap-2">
+            <Link
+              href="/"
+              className="font-serif text-xl font-semibold tracking-tight hover:opacity-95 text-foreground transition-opacity"
+              id="nav-logo"
+            >
+              Jessica Bernstein<span className="text-destructive font-bold">.</span>
+            </Link>
+          </div>
+
+          <div className="flex items-center gap-2 md:hidden">
+            {/* Theme Toggle shifted here for unified mobile grouping */}
+            {mounted && (
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                title="Toggle theme"
+                className="h-9 w-9 text-muted-foreground hover:text-foreground cursor-pointer rounded-sm"
+                id="theme-toggle-btn-mobile"
+              >
+                {theme === "dark" ? <Sun className="h-[18px] w-[18px]" /> : <Moon className="h-[18px] w-[18px]" />}
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+            )}
+
+            {/* Mobile Menu Trigger */}
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger
+                render={
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="md:hidden text-muted-foreground hover:text-foreground rounded-sm"
+                    aria-label="Open menu"
+                    id="mobile-nav-trigger"
+                  />
+                }
+              >
+                <Menu className="h-5 w-5" />
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] border-l border-border bg-card text-card-foreground p-6 flex flex-col h-[100dvh]">
+                <SheetTitle className="font-serif text-lg font-semibold tracking-tight mb-6 text-foreground">
+                  Jessica Bernstein.
+                </SheetTitle>
+                <div className="flex flex-col gap-8 flex-grow overflow-y-auto pr-2 mt-4">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-xs font-semibold tracking-wider text-muted-foreground/80 uppercase mb-2">Navigation</span>
+                    {NAV_LINKS.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`block w-full py-3 text-lg font-medium tracking-wide transition-colors hover:text-foreground text-left border-b border-border/40 last:border-0 ${isActive(link.href) ? "text-foreground" : "text-muted-foreground"
+                          }`}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-col gap-1 pt-6 border-t border-border">
+                    <span className="text-xs font-semibold tracking-wider text-muted-foreground/80 uppercase font-serif mb-2">Practice Areas</span>
+                    {PRACTICE_AREAS.map((area) => (
+                      <Link
+                        key={area.href}
+                        href={area.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`block w-full py-3 text-base font-medium transition-colors hover:text-foreground text-left border-b border-border/40 last:border-0 ${isActive(area.href) ? "text-foreground" : "text-muted-foreground"
+                          }`}
+                      >
+                        {area.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-4 pt-6 pb-10 border-t border-border mt-auto w-full max-w-xs mx-auto justify-center items-center text-center">
+                  <Button
+                    asChild
+                    variant="destructive"
+                    className="w-full h-12 justify-center bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-sm text-base font-semibold shadow-level-2"
+                  >
+                    <a href="tel:5128872028" className="flex items-center justify-center gap-2 w-full h-full">
+                      <Phone className="h-4 w-4" />
+                      <span>Call 24/7 Jail Release</span>
+                    </a>
+                  </Button>
+                  <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground/85 text-center mt-1">
+                    <AlertTriangle className="h-4 w-4 text-destructive flex-shrink-0" />
+                    <span>Jail release services available 24/7.</span>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
 
         {/* Desktop Nav */}
@@ -140,16 +230,16 @@ export function Header() {
           </Link>
         </nav>
 
-        {/* Right Action Items */}
-        <div className="flex items-center gap-3">
-          {/* Theme Toggle */}
+        {/* Row 2: Emergency Button (Full width on mobile) & Desktop Theme Toggle */}
+        <div className="w-full md:w-auto flex items-center justify-center md:justify-end gap-3">
+          {/* Theme Toggle (Desktop Only) */}
           {mounted && (
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               title="Toggle theme"
-              className="h-9 w-9 text-muted-foreground hover:text-foreground cursor-pointer rounded-sm"
+              className="hidden md:flex h-9 w-9 text-muted-foreground hover:text-foreground cursor-pointer rounded-sm"
               id="theme-toggle-btn"
             >
               {theme === "dark" ? <Sun className="h-[18px] w-[18px]" /> : <Moon className="h-[18px] w-[18px]" />}
@@ -157,88 +247,18 @@ export function Header() {
             </Button>
           )}
 
-          {/* Urgent Jail Release Button (Pinned) */}
+          {/* Urgent Jail Release Button */}
           <Button
             asChild
             variant="destructive"
-            className="font-medium text-xs sm:text-sm bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-sm cursor-pointer shadow-level-2"
+            className="w-full md:w-auto justify-center bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-sm font-semibold gap-2 flex text-sm md:text-base py-2.5 md:py-2 shadow-level-1"
             id="nav-cta-jail-release"
           >
-            <Link href="tel:5128872028" className="flex items-center gap-1.5 px-3 py-1.5">
+            <Link href="tel:5128872028" className="flex items-center gap-1.5 px-3 py-1.5 justify-center">
               <Phone className="h-3.5 w-3.5 animate-pulse" />
               <span>Jail Release: (512) 887-2028</span>
             </Link>
           </Button>
-
-          {/* Mobile Menu Trigger */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger
-              render={
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="md:hidden text-muted-foreground hover:text-foreground rounded-sm"
-                  aria-label="Open menu"
-                  id="mobile-nav-trigger"
-                />
-              }
-            >
-              <Menu className="h-5 w-5" />
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] border-l border-border bg-card text-card-foreground p-6 flex flex-col h-[100dvh]">
-              <SheetTitle className="font-serif text-lg font-semibold tracking-tight mb-6 text-foreground">
-                Jessica Bernstein.
-              </SheetTitle>
-              <div className="flex flex-col gap-8 flex-grow overflow-y-auto pr-2 mt-4">
-                <div className="flex flex-col gap-1">
-                  <span className="text-xs font-semibold tracking-wider text-muted-foreground/80 uppercase mb-2">Navigation</span>
-                  {NAV_LINKS.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className={`block w-full py-3 text-lg font-medium tracking-wide transition-colors hover:text-foreground text-left border-b border-border/40 last:border-0 ${isActive(link.href) ? "text-foreground" : "text-muted-foreground"
-                        }`}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-
-                <div className="flex flex-col gap-1 pt-6 border-t border-border">
-                  <span className="text-xs font-semibold tracking-wider text-muted-foreground/80 uppercase font-serif mb-2">Practice Areas</span>
-                  {PRACTICE_AREAS.map((area) => (
-                    <Link
-                      key={area.href}
-                      href={area.href}
-                      onClick={() => setIsOpen(false)}
-                      className={`block w-full py-3 text-base font-medium transition-colors hover:text-foreground text-left border-b border-border/40 last:border-0 ${isActive(area.href) ? "text-foreground" : "text-muted-foreground"
-                        }`}
-                    >
-                      {area.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-4 pt-6 pb-10 border-t border-border mt-auto w-full max-w-xs mx-auto justify-center items-center text-center">
-                <Button
-                  asChild
-                  variant="destructive"
-                  className="w-full h-12 justify-center bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-sm text-base font-semibold shadow-level-2"
-                >
-                  <a href="tel:5128872028" className="flex items-center justify-center gap-2 w-full h-full">
-                    <Phone className="h-4 w-4" />
-                    <span>Call 24/7 Jail Release</span>
-                  </a>
-                </Button>
-                <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground/85 text-center mt-1">
-                  <AlertTriangle className="h-4 w-4 text-destructive flex-shrink-0" />
-                  <span>Jail release services available 24/7.</span>
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
         </div>
       </div>
     </header>
