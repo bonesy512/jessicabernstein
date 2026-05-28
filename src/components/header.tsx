@@ -96,7 +96,7 @@ export function Header() {
               >
                 <Menu className="h-5 w-5" />
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] border-l border-border bg-card text-card-foreground p-6 flex flex-col h-[100dvh]">
+              <SheetContent side="right" className="w-[300px] border-l border-border bg-card text-card-foreground p-6 flex flex-col h-[100dvh]" style={{ maxWidth: "300px" }}>
                 <SheetTitle className="font-serif text-lg font-semibold tracking-tight mb-6 text-foreground">
                   Jessica Bernstein.
                 </SheetTitle>
