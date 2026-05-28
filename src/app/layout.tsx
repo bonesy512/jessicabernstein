@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const inter = Inter({
@@ -18,6 +19,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://jbernstein.vercel.app/"),
   title: {
     default: "Law Office of Jessica Bernstein | Austin Criminal Defense Lawyer",
     template: "%s | Law Office of Jessica Bernstein"
@@ -31,6 +33,20 @@ export const metadata: Metadata = {
     siteName: "Law Office of Jessica Bernstein",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/1549143_orig.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Law Office of Jessica Bernstein - Austin Criminal Defense",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Law Office of Jessica Bernstein | Austin Criminal Defense Lawyer",
+    description: "Experienced Austin criminal defense attorney specializing in DWI defense, traffic tickets, felonies, and 24-hour Travis County jail release.",
+    images: ["/1549143_orig.jpg"],
   },
   alternates: {
     canonical: "https://atxcrimdefense.com",
@@ -108,6 +124,7 @@ export default function RootLayout({
           <Header />
           <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow flex flex-col">{children}</main>
           <Footer />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

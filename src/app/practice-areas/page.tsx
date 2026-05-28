@@ -2,11 +2,18 @@ import Link from "next/link"
 import { Scale, Clock, ShieldAlert, FileText, ChevronRight } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
-export const metadata = {
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
   title: "Criminal Defense Practice Areas | Austin, TX",
-  description: "Browse the legal defense services offered by attorney Jessica Bernstein, including DWI defense, jail release, felonies, and traffic ticket defense.",
+  description: "Browse the criminal defense services offered by Jessica Bernstein, including DWI defense, 24-hour attorney bonds, and pre-indictment grand jury representation.",
   alternates: {
     canonical: "https://atxcrimdefense.com/practice-areas",
+  },
+  openGraph: {
+    title: "Criminal Defense Practice Areas | Austin, TX",
+    description: "Browse the criminal defense services offered by Jessica Bernstein, including DWI defense, 24-hour attorney bonds, and pre-indictment grand jury representation.",
+    url: "/practice-areas",
   },
 }
 

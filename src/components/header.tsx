@@ -19,6 +19,7 @@ const NAV_LINKS = [
   { href: "/about", label: "About" },
   { href: "/reviews", label: "Reviews" },
   { href: "/results", label: "Results" },
+  { href: "/blog", label: "Blog" },
   { href: "/financing", label: "Financing" },
   { href: "/contact", label: "Contact" },
 ]
@@ -53,8 +54,8 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo/Brand */}
         <div className="flex items-center gap-2">
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="font-serif text-xl font-semibold tracking-tight hover:opacity-95 text-foreground transition-opacity"
             id="nav-logo"
           >
@@ -66,18 +67,16 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-6">
           <Link
             href="/"
-            className={`text-sm font-medium transition-colors hover:text-foreground/80 ${
-              isActive("/") ? "text-foreground" : "text-muted-foreground"
-            }`}
+            className={`text-sm font-medium transition-colors hover:text-foreground/80 ${isActive("/") ? "text-foreground" : "text-muted-foreground"
+              }`}
             id="nav-link-home"
           >
             Home
           </Link>
           <Link
             href="/about"
-            className={`text-sm font-medium transition-colors hover:text-foreground/80 ${
-              isActive("/about") ? "text-foreground" : "text-muted-foreground"
-            }`}
+            className={`text-sm font-medium transition-colors hover:text-foreground/80 ${isActive("/about") ? "text-foreground" : "text-muted-foreground"
+              }`}
             id="nav-link-about"
           >
             About
@@ -101,36 +100,40 @@ export function Header() {
 
           <Link
             href="/reviews"
-            className={`text-sm font-medium transition-colors hover:text-foreground/80 ${
-              isActive("/reviews") ? "text-foreground" : "text-muted-foreground"
-            }`}
+            className={`text-sm font-medium transition-colors hover:text-foreground/80 ${isActive("/reviews") ? "text-foreground" : "text-muted-foreground"
+              }`}
             id="nav-link-reviews"
           >
             Reviews
           </Link>
           <Link
             href="/results"
-            className={`text-sm font-medium transition-colors hover:text-foreground/80 ${
-              isActive("/results") ? "text-foreground" : "text-muted-foreground"
-            }`}
+            className={`text-sm font-medium transition-colors hover:text-foreground/80 ${isActive("/results") ? "text-foreground" : "text-muted-foreground"
+              }`}
             id="nav-link-results"
           >
             Results
           </Link>
           <Link
+            href="/blog"
+            className={`text-sm font-medium transition-colors hover:text-foreground/80 ${isActive("/blog") ? "text-foreground" : "text-muted-foreground"
+              }`}
+            id="nav-link-blog"
+          >
+            Blog
+          </Link>
+          <Link
             href="/financing"
-            className={`text-sm font-medium transition-colors hover:text-foreground/80 ${
-              isActive("/financing") ? "text-foreground" : "text-muted-foreground"
-            }`}
+            className={`text-sm font-medium transition-colors hover:text-foreground/80 ${isActive("/financing") ? "text-foreground" : "text-muted-foreground"
+              }`}
             id="nav-link-financing"
           >
             Financing
           </Link>
           <Link
             href="/contact"
-            className={`text-sm font-medium transition-colors hover:text-foreground/80 ${
-              isActive("/contact") ? "text-foreground" : "text-muted-foreground"
-            }`}
+            className={`text-sm font-medium transition-colors hover:text-foreground/80 ${isActive("/contact") ? "text-foreground" : "text-muted-foreground"
+              }`}
             id="nav-link-contact"
           >
             Contact
@@ -194,9 +197,8 @@ export function Header() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className={`text-base font-medium py-1 transition-colors hover:text-foreground ${
-                        isActive(link.href) ? "text-foreground" : "text-muted-foreground"
-                      }`}
+                      className={`text-base font-medium py-1 transition-colors hover:text-foreground ${isActive(link.href) ? "text-foreground" : "text-muted-foreground"
+                        }`}
                     >
                       {link.label}
                     </Link>
@@ -210,9 +212,8 @@ export function Header() {
                       key={area.href}
                       href={area.href}
                       onClick={() => setIsOpen(false)}
-                      className={`text-sm font-medium py-1 transition-colors hover:text-foreground ${
-                        isActive(area.href) ? "text-foreground" : "text-muted-foreground"
-                      }`}
+                      className={`text-sm font-medium py-1 transition-colors hover:text-foreground ${isActive(area.href) ? "text-foreground" : "text-muted-foreground"
+                        }`}
                     >
                       {area.label}
                     </Link>

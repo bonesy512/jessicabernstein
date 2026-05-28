@@ -3,11 +3,18 @@ import Link from "next/link"
 import { CheckCircle2, Award, BookOpen, ShieldCheck, Mail, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-export const metadata = {
-  title: "About Attorney Jessica Bernstein",
-  description: "Learn about Jessica Bernstein's background, trial experience, and client-first approach to criminal defense in Austin, Texas.",
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "About Attorney Jessica Bernstein | Austin Criminal Defense Lawyer",
+  description: "Learn about Jessica Bernstein's legal credentials, University of Texas trial training, and client-first philosophy defending Austin citizens.",
   alternates: {
     canonical: "https://atxcrimdefense.com/about",
+  },
+  openGraph: {
+    title: "About Attorney Jessica Bernstein | Austin Criminal Defense Lawyer",
+    description: "Learn about Jessica Bernstein's legal credentials, University of Texas trial training, and client-first philosophy defending Austin citizens.",
+    url: "/about",
   },
 }
 

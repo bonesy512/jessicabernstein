@@ -43,11 +43,32 @@ export default function ContactPage() {
 
     setIsSubmitting(true)
     
-    // Simulate API request
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    
-    setIsSubmitting(false)
-    setSubmitted(true)
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "An error occurred while processing your request.")
+      }
+
+      setSubmitted(true)
+    } catch (err: any) {
+      console.error("Submission error:", err)
+      setError(
+        err.message 
+          ? `${err.message} For immediate assistance, please call our office directly at (512) 887-2028.`
+          : "Failed to submit request due to a network connection issue. Please call our office directly at (512) 887-2028 for immediate assistance."
+      )
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (

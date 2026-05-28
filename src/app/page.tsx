@@ -3,6 +3,17 @@ import Image from "next/image"
 import { Shield, Clock, Award, CheckCircle2, Scale, Phone, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Austin Criminal Defense Attorney | Law Office of Jessica Bernstein",
+  description: "Aggressive courtroom advocacy & compassionate representation for Austin and Travis County arrests. Specializing in jail release, DWI, and felony defense. Free consultations.",
+  openGraph: {
+    title: "Austin Criminal Defense Attorney | Law Office of Jessica Bernstein",
+    description: "Aggressive courtroom advocacy & compassionate representation for Austin and Travis County arrests. Specializing in jail release, DWI, and felony defense. Free consultations.",
+    url: "/",
+  },
+}
 
 export default function HomePage() {
   return (
@@ -331,6 +342,94 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4.75 RECENT LEGAL GUIDES & RESOURCES SECTION */}
+      <section className="w-full px-4 sm:px-6 lg:px-8 py-4xl sm:py-5xl bg-background border-t border-border" id="recent-blog-section">
+        <div className="mx-auto max-w-7xl w-full flex flex-col gap-xl">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-md text-left">
+            <div className="flex flex-col gap-xs max-w-2xl">
+              <span className="text-xs font-semibold tracking-wider text-accent uppercase">Resources</span>
+              <h2 className="font-serif text-3xl sm:text-[32px] sm:leading-[40px] font-semibold tracking-[-1.28px] text-foreground">
+                Recent legal guides & resources.
+              </h2>
+              <p className="font-sans text-[16px] leading-[24px] text-muted-foreground">
+                Read essential information on Central Texas jail release, DWI blood test science, and how grand jury packets work.
+              </p>
+            </div>
+            <Button asChild variant="outline" className="rounded-pill border-border bg-transparent text-foreground hover:bg-muted self-start sm:self-auto cursor-pointer">
+              <Link href="/blog" className="flex items-center gap-1">
+                <span>View all guides</span>
+                <ChevronRight className="h-3.5 w-3.5" />
+              </Link>
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Guide 1 */}
+            <Card className="flex flex-col h-full bg-card border border-border shadow-level-3 rounded-md hover:translate-y-[-2px] transition-all duration-200 p-6 md:p-8 gap-4 text-left">
+              <CardHeader className="p-0 flex flex-col gap-2">
+                <span className="text-xs font-semibold tracking-wider text-accent uppercase font-serif">Jail Release Guide</span>
+                <CardTitle className="font-serif text-lg font-semibold tracking-tight text-foreground line-clamp-2">
+                  How to get someone out of jail in Travis County: The attorney bond advantage.
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-0 flex-grow">
+                <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                  Securing a jail release in Travis County requires either waiting for a magistrate to set bail or hiring a criminal defense attorney to write an attorney bond. An attorney bond is the fastest method to secure release because it bypasses the magistrate queue.
+                </p>
+              </CardContent>
+              <CardFooter className="p-0 mt-auto pt-2">
+                <Link href="/blog/how-to-get-someone-out-of-travis-county-jail" className="text-xs font-medium text-foreground hover:text-accent hover:underline inline-flex items-center gap-1 transition-colors">
+                  <span>Read guide</span>
+                  <ChevronRight className="h-3.5 w-3.5" />
+                </Link>
+              </CardFooter>
+            </Card>
+
+            {/* Guide 2 */}
+            <Card className="flex flex-col h-full bg-card border border-border shadow-level-3 rounded-md hover:translate-y-[-2px] transition-all duration-200 p-6 md:p-8 gap-4 text-left">
+              <CardHeader className="p-0 flex flex-col gap-2">
+                <span className="text-xs font-semibold tracking-wider text-accent uppercase font-serif">DWI Defense Guide</span>
+                <CardTitle className="font-serif text-lg font-semibold tracking-tight text-foreground line-clamp-2">
+                  Travis County DWI blood tests: Challenging the evidence in Austin.
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-0 flex-grow">
+                <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                  Challenging a Travis County DWI blood test involves auditing the 15-day ALR hearing deadline, testing the calibration records of the gas chromatograph at the Austin DPS lab, and identifying constitutional violations in the blood warrant.
+                </p>
+              </CardContent>
+              <CardFooter className="p-0 mt-auto pt-2">
+                <Link href="/blog/travis-county-dwi-blood-tests" className="text-xs font-medium text-foreground hover:text-accent hover:underline inline-flex items-center gap-1 transition-colors">
+                  <span>Read guide</span>
+                  <ChevronRight className="h-3.5 w-3.5" />
+                </Link>
+              </CardFooter>
+            </Card>
+
+            {/* Guide 3 */}
+            <Card className="flex flex-col h-full bg-card border border-border shadow-level-3 rounded-md hover:translate-y-[-2px] transition-all duration-200 p-6 md:p-8 gap-4 text-left">
+              <CardHeader className="p-0 flex flex-col gap-2">
+                <span className="text-xs font-semibold tracking-wider text-accent uppercase font-serif">Felony Defense Guide</span>
+                <CardTitle className="font-serif text-lg font-semibold tracking-tight text-foreground line-clamp-2">
+                  Defending Austin felony charges: The power of the Travis County grand jury packet.
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-0 flex-grow">
+                <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                  In Texas, felony charges must be presented to a grand jury for indictment, usually within a 3-month window from arrest. Hiring an Austin felony defense lawyer allows you to submit a grand jury packet to persuade the grand jury to issue a "No Bill."
+                </p>
+              </CardContent>
+              <CardFooter className="p-0 mt-auto pt-2">
+                <Link href="/blog/travis-county-grand-jury-felony-defense" className="text-xs font-medium text-foreground hover:text-accent hover:underline inline-flex items-center gap-1 transition-colors">
+                  <span>Read guide</span>
+                  <ChevronRight className="h-3.5 w-3.5" />
+                </Link>
+              </CardFooter>
+            </Card>
           </div>
         </div>
       </section>
