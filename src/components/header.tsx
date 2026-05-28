@@ -185,11 +185,11 @@ export function Header() {
             >
               <Menu className="h-5 w-5" />
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] border-l border-border bg-card text-card-foreground p-6">
+            <SheetContent side="right" className="w-[300px] border-l border-border bg-card text-card-foreground p-6 flex flex-col h-[100dvh]">
               <SheetTitle className="font-serif text-lg font-semibold tracking-tight mb-6 text-foreground">
                 Jessica Bernstein.
               </SheetTitle>
-              <div className="flex flex-col gap-6 mt-6">
+              <div className="flex flex-col gap-6 flex-grow overflow-y-auto pr-2 mt-6">
                 <div className="flex flex-col gap-3">
                   <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">Navigation</span>
                   {NAV_LINKS.map((link) => (
@@ -219,22 +219,22 @@ export function Header() {
                     </Link>
                   ))}
                 </div>
+              </div>
 
-                <div className="flex flex-col gap-4 pt-6 border-t border-border mt-auto">
-                  <Button
-                    asChild
-                    variant="destructive"
-                    className="w-full justify-center bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-sm"
-                  >
-                    <a href="tel:5128872028" className="flex items-center justify-center gap-2 py-2">
-                      <Phone className="h-4 w-4" />
-                      <span>Call 24/7 Jail Release</span>
-                    </a>
-                  </Button>
-                  <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground text-center">
-                    <AlertTriangle className="h-4 w-4 text-destructive flex-shrink-0" />
-                    <span>Jail release services available 24/7.</span>
-                  </div>
+              <div className="flex flex-col gap-4 pt-6 border-t border-border mt-auto w-full max-w-xs mx-auto justify-center items-center">
+                <Button
+                  asChild
+                  variant="destructive"
+                  className="w-full justify-center bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-sm"
+                >
+                  <a href="tel:5128872028" className="flex items-center justify-center gap-2 py-2">
+                    <Phone className="h-4 w-4" />
+                    <span>Call 24/7 Jail Release</span>
+                  </a>
+                </Button>
+                <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground text-center">
+                  <AlertTriangle className="h-4 w-4 text-destructive flex-shrink-0" />
+                  <span>Jail release services available 24/7.</span>
                 </div>
               </div>
             </SheetContent>
