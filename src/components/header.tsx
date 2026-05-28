@@ -51,9 +51,9 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md transition-colors duration-200">
-      <div className="mx-auto flex flex-col md:flex-row md:h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3 md:py-0 gap-3 md:gap-4">
+      <div className="mx-auto flex flex-col lg:flex-row lg:h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3 lg:py-0 gap-3 lg:gap-4">
         {/* Row 1: Logo & Mobile Triggers Wrapper */}
-        <div className="flex w-full md:w-auto items-center justify-between md:justify-start gap-4">
+        <div className="flex w-full lg:w-auto items-center justify-between lg:justify-start gap-4">
           {/* Logo/Brand */}
           <div className="flex items-center gap-2">
             <Link
@@ -65,7 +65,7 @@ export function Header() {
             </Link>
           </div>
 
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
             {/* Theme Toggle shifted here for unified mobile grouping */}
             {mounted && (
               <Button
@@ -88,7 +88,7 @@ export function Header() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="md:hidden text-muted-foreground hover:text-foreground rounded-sm"
+                    className="lg:hidden text-muted-foreground hover:text-foreground rounded-sm"
                     aria-label="Open menu"
                     id="mobile-nav-trigger"
                   />
@@ -154,7 +154,7 @@ export function Header() {
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-6">
           <Link
             href="/"
             className={`text-sm font-medium transition-colors hover:text-foreground/80 ${isActive("/") ? "text-foreground" : "text-muted-foreground"
@@ -231,7 +231,7 @@ export function Header() {
         </nav>
 
         {/* Row 2: Emergency Button (Full width on mobile) & Desktop Theme Toggle */}
-        <div className="w-full md:w-auto flex items-center justify-center md:justify-end gap-3">
+        <div className="w-full lg:w-auto flex items-center justify-center lg:justify-end gap-3">
           {/* Theme Toggle (Desktop Only) */}
           {mounted && (
             <Button
@@ -239,7 +239,7 @@ export function Header() {
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               title="Toggle theme"
-              className="hidden md:flex h-9 w-9 text-muted-foreground hover:text-foreground cursor-pointer rounded-sm"
+              className="hidden lg:flex h-9 w-9 text-muted-foreground hover:text-foreground cursor-pointer rounded-sm"
               id="theme-toggle-btn"
             >
               {theme === "dark" ? <Sun className="h-[18px] w-[18px]" /> : <Moon className="h-[18px] w-[18px]" />}
@@ -251,7 +251,7 @@ export function Header() {
           <Button
             asChild
             variant="destructive"
-            className="w-full md:w-auto justify-center bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-sm font-semibold gap-2 flex text-sm md:text-base py-2.5 md:py-2 shadow-level-1"
+            className="w-full lg:w-auto justify-center bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-sm font-semibold gap-2 flex text-sm lg:text-base py-2.5 lg:py-2 shadow-level-1"
             id="nav-cta-jail-release"
           >
             <Link href="tel:5128872028" className="flex items-center gap-1.5 px-3 py-1.5 justify-center">
