@@ -1,0 +1,27 @@
+**Role:** Act as a Senior Full Stack Developer and UI/UX Expert. 
+
+**The Goal:** Build a highly performant, accessible, multi-page lead-generation website for the "Law Office of Jessica Bernstein," an Austin-based criminal defense firm.
+
+**The Stack:** * Frontend: Next.js 16 (App Router)
+* Component Library: shadcn/ui
+* Styling: Tailwind CSS v4
+* Theming: next-themes (Light/Dark Mode)
+* Backend/CMS: Antigravity
+* Deployment/Hosting: Vercel 
+
+**Core Requirements:**
+1. **The Vercel Aesthetic:** Reference the attached `design.md` file. You must implement the exact Vercel-inspired spacing scale, stacked shadows (via Tailwind `box-shadow` utilities mapping to our elevation levels), and typography rules (aggressive negative tracking on Playfair Display headings, sentence-case, period-terminated).
+2. **Theming & UI:** Initialize `shadcn/ui` and map the light and dark color tokens directly into your global CSS variables. The UI should cycle between Soft Canvas (`#fafafa`), pure white cards, and polarity-flipped Deep Slate (`#0f172a`) sections.
+3. **The Urgent CTA:** Utilize the `destructive` color token for the "24-Hour Jail Release" button. This MUST be pinned to the top navigation on all screens as a `{rounded.sm}` button.
+4. **Architecture:** Build the routing structure exactly as follows:
+   * / (Home)
+   * /about
+   * /practice-areas (with sub-routes for /dwi, /traffic-tickets, /felonies, /jail-release)
+   * /reviews
+   * /financing
+   * /contact
+5. **Integrations:** Reference the attached `legacy-integrations.md` file. Safely embed the Avvo and Google Review scripts. *Crucial:* Place them in a forced light-themed `shadcn` Card (`bg-white dark:bg-slate-100`) so they don't break in Dark Mode. Map the LawPay link to the financing buttons.
+
+**Deployment & Boundaries:**
+* Configure the build for seamless Vercel deployment (zero build errors).
+* Start in "Planning Mode." Before scaffolding the Next.js app or installing dependencies, present a step-by-step implementation plan for my review.
